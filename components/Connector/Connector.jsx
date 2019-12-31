@@ -42,7 +42,7 @@ export default function Connector({ events }) {
     hasAppearedRef.current = hasAppeared;
 
     useLayoutEffect(() => {
-        events.subscribe("content.scroll", () => {
+        events.subscribe("connector/content.scroll", () => {
             // if(!hasAppearedRef.current) {
             setHasAppeared(isInViewport(containerRef.current))
             // }

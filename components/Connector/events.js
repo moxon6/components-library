@@ -1,13 +1,14 @@
 const subscriptions = {}
 
 export default {
-    subscribe(event, fn) {
-        subscriptions[event] = subscriptions[event] || []
-        subscriptions[event].push(fn)
+    subscribe(subscriptionName, fn) {
+        const [namespace, event] = subscriptionName.split("/");
+        subscriptions[event] = subscriptions[event] || {}
+        subscriptions[event][namespace] = fn
     },
 
     dispatchEvent(event, ...args) {
-        for (let fn of subscriptions[event]) {
+        for ( let fn of Object.values(subscriptions[event]) ) {
             fn(...args)
         }
     }
