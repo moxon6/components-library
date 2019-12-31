@@ -11,12 +11,9 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "start": "start-storybook -p 9009 -s public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +34,7 @@
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
     "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8"
+    "@storybook/react": "^5.2.8",
+    "@storybook/storybook-deployer": "^2.8.1"
   }
 }
