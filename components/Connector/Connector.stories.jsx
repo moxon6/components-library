@@ -10,13 +10,16 @@ export default {
   decorators: [withKnobs]
 };
 
-button("Dispatch scroll event", () => {
-  events.dispatchEvent("content.scroll")
-});
 
 
-export const connectorExample = () => (
-  <div className="connector-container">
+
+export const connectorExample = () => {
+  button("Dispatch scroll event", () => {
+    events.dispatchEvent("content.scroll")
+  }); 
+  return (
+    <div className="connector-container">
     <Connector events={events} />
   </div>
-)
+  )
+}
