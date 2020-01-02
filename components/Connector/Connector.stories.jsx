@@ -7,17 +7,5 @@ export default {
   title: 'Connector',
 };
 
-export const connectorExample = () => (
-  <>
-  <form onSubmit={e => {
-    e.preventDefault();
-    const {value} = e.target.querySelector('input')
-    events.dispatchEvent(value)
-  }}>
-    <input type="text" placeholder="dispatch event" >
-      
-    </input>
-  </form>
-  <Connector events={events} />
-  </>
-)
+export const connectorExample = () => <Connector events={events} />
+
