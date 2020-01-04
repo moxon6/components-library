@@ -1,5 +1,9 @@
+$color1: #fd335e !default;
+$color2: #08fdd8 !default;
+
 .lineContainerContainer {
   height: 200px;
+  overflow: hidden;
 
   .lineContainer {
     top: 0;
@@ -17,7 +21,7 @@
       left: 0;
       stroke-dasharray: var(--pathLength);
       stroke-dashoffset: var(--pathLength);
-      stroke: #fd335e;
+      stroke: $color1;
       animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
     }
   }
@@ -25,7 +29,7 @@
 
 @keyframes animateColor {
   to {
-    stroke: #08fdd8;
+    stroke: $color2;
   }
 }
 

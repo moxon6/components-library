@@ -15,8 +15,7 @@ const createPath = (width, height) => (
     `
 )
 
-export default function Connector({ isVisible, styles }) {
-
+export default function Connector({ isVisible, styles = defaultStyles }) {
     const containerRef = useRef(null);
     const [pathLength, setPathLength] = useState(0);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
@@ -25,7 +24,9 @@ export default function Connector({ isVisible, styles }) {
         function setSize() {
             const { width, height } = containerRef.current.getBoundingClientRect();
             setDimensions({ width, height });
-            const path = containerRef.current.querySelector('path');
+            const path = containerRef
+                .current
+                .querySelector('path');
             setPathLength(path.getTotalLength());
         }
         setSize();
@@ -48,12 +49,4 @@ export default function Connector({ isVisible, styles }) {
             </div>
         </div>
     )
-}
-
-Connector.propTypes = {
-
-}
-
-Connector.defaultProps = {
-    styles: defaultStyles
 }
