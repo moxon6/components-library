@@ -15,36 +15,16 @@ const createPath = (width, height) => (
     `
 )
 
-function isInViewport(el) {
-    var bounding = el.getBoundingClientRect();
-
-    return (
-        bounding.bottom >= 0 &&
-        bounding.left >= 0 &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-        bounding.top <= (window.innerHeight || document.documentElement.clientHeight)
-    )
-};
-
-export default function Connector({ registerOnScroll }) {
+export default function Connector({ isVisible }) {
 
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-    const [isVisible, setIsVisible] = useState(false);
     const [pathLength, setPathLength] = useState(0);
 
-    const isVisibleRef = useRef(null);
     const containerRef = useRef(null);
     const svgRef = useRef(null);
 
-    isVisibleRef.current = isVisible;
 
     useLayoutEffect(() => {
-        registerOnScroll(() => {
-            if (!isVisibleRef.current) {
-                setIsVisible(isInViewport(containerRef.current))
-            }
-        })
-
         function setSize() {
             const { width, height } = containerRef.current.getBoundingClientRect();
             setDimensions({ width, height });
@@ -55,7 +35,7 @@ export default function Connector({ registerOnScroll }) {
 
         new ResizeObserver(setSize)
             .observe(containerRef.current);
-    }, [isVisible, registerOnScroll])
+    }, [])
 
     return (
         <div className="line-container-container">
