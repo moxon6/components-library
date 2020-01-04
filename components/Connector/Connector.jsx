@@ -26,7 +26,7 @@ function isInViewport(el) {
     )
 };
 
-export default function Connector({ events, scrollEvent }) {
+export default function Connector({ registerOnScroll }) {
 
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
     const [isVisible, setIsVisible] = useState(false);
@@ -38,7 +38,7 @@ export default function Connector({ events, scrollEvent }) {
     isVisibleRef.current = isVisible;
 
     useLayoutEffect(() => {
-        events.subscribe(scrollEvent, () => {
+        registerOnScroll(() => {
             if (!isVisibleRef.current) {
                 setIsVisible(isInViewport(containerRef.current))
             }
@@ -52,7 +52,7 @@ export default function Connector({ events, scrollEvent }) {
 
         new ResizeObserver(setSize)
             .observe(containerRef.current);
-    }, [events, isVisible, scrollEvent])
+    }, [isVisible, registerOnScroll])
 
     return (
         <div className="line-container-container">
