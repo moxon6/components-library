@@ -19,8 +19,8 @@
     .connector-line {
       top: 0;
       left: 0;
-      stroke-dasharray: 1205;
-      stroke-dashoffset: 1205;
+      stroke-dasharray: var(--pathLength);
+      stroke-dashoffset: var(--pathLength);
       stroke: #fd335e;
       animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
     }

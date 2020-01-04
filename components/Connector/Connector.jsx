@@ -30,6 +30,7 @@ export default function Connector({ registerOnScroll }) {
 
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
     const [isVisible, setIsVisible] = useState(false);
+    const [pathLength, setPathLength] = useState(0);
 
     const isVisibleRef = useRef(null);
     const containerRef = useRef(null);
@@ -47,6 +48,8 @@ export default function Connector({ registerOnScroll }) {
         function setSize() {
             const { width, height } = containerRef.current.getBoundingClientRect();
             setDimensions({ width, height });
+            const path = svgRef.current.querySelector('path');
+            setPathLength(path.getTotalLength());
         }
         setSize();
 
@@ -60,7 +63,7 @@ export default function Connector({ registerOnScroll }) {
                 "line-container": true,
                 "hidden": !isVisible
             })} ref={containerRef}>
-                <svg ref={svgRef} className="connector-line" version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
+                <svg ref={svgRef} style={{ '--pathLength': pathLength}} className="connector-line" version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
                     <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2"
                         fill="none">
                     </path>
