@@ -1,6 +1,4 @@
 import React from 'react';
-import events from './events';
-
 import Connector from './Connector';
 import { withKnobs, button } from "@storybook/addon-knobs";
 import './Connector.stories.scss';
@@ -10,16 +8,15 @@ export default {
   decorators: [withKnobs]
 };
 
-
-const SCROLL_EVENT = "content.scroll";
-
 export const connectorExample = () => {
-  button("Dispatch scroll event", () => {
-    events.dispatchEvent("content.scroll")
-  }); 
+
+  let _onScroll;
+  const onScroll = () => _onScroll();
+
+  button("Execute onScroll", onScroll); 
   return (
     <div className="connector-container">
-    <Connector registerOnScroll={fn => events.subscribe(`connector/${SCROLL_EVENT}`, fn)}/>
+    <Connector registerOnScroll={fn => {_onScroll = fn }}/>
   </div>
   )
 }
