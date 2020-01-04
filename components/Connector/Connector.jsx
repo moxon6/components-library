@@ -36,7 +36,6 @@ export default function Connector({ isVisible, styles = defaultStyles }) {
     }, [])
 
     return (
-        <div className={styles.lineContainerContainer}>
             <div className={classNames({
                 [styles.lineContainer]: true,
                 [styles.hidden]: !isVisible
@@ -47,6 +46,5 @@ export default function Connector({ isVisible, styles = defaultStyles }) {
                 </svg>
 
             </div>
-        </div>
     )
 }

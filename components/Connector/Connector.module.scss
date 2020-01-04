@@ -1,33 +1,24 @@
 $color1: #fd335e !default;
 $color2: #08fdd8 !default;
 
-.lineContainerContainer {
-  height: 200px;
-  overflow: hidden;
+.lineContainer {
+  width: 100%;
+  height: 100%;
+  
+  &.hidden {
+      display: none;
+  }
 
-  .lineContainer {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    &.hidden {
-      > svg {
-        display: none;
-      }
-    }
-
-    .connectorLine {
-      top: 0;
-      left: 0;
-      stroke-dasharray: var(--pathLength);
-      stroke-dashoffset: var(--pathLength);
-      stroke: $color1;
-      animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
-    }
+  .connectorLine {
+    stroke-dasharray: var(--pathLength);
+    stroke-dashoffset: var(--pathLength);
+    animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
   }
 }
-
 @keyframes animateColor {
+  from {
+    stroke: $color1;
+  }
   to {
     stroke: $color2;
   }
