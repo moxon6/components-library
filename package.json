@@ -16,7 +16,7 @@
   "scripts": {
     "test": "react-scripts test",
     "start": "start-storybook -p 9009",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages -o build"
   },
   "eslintConfig": {
     "extends": "react-app"
