@@ -19,7 +19,7 @@ export const connectorExample = () => {
   }); 
   return (
     <div className="connector-container">
-    <Connector events={events} />
+    <Connector events={events} scrollEvent="connector/content.scroll"/>
   </div>
   )
 }
