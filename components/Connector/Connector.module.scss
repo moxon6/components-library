@@ -1,7 +1,7 @@
-.line-container-container {
+.lineContainerContainer {
   height: 200px;
 
-  .line-container {
+  .lineContainer {
     top: 0;
     left: 0;
     width: 100%;
@@ -12,7 +12,7 @@
       }
     }
 
-    .connector-line {
+    .connectorLine {
       top: 0;
       left: 0;
       stroke-dasharray: var(--pathLength);
