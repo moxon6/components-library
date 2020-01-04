@@ -1,20 +1,15 @@
 $color1: #fd335e !default;
 $color2: #08fdd8 !default;
 
-.lineContainer {
-  width: 100%;
-  height: 100%;
-  
+.connectorLine {
+  stroke-dasharray: var(--pathLength);
+  stroke-dashoffset: var(--pathLength);
+  animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
   &.hidden {
-      display: none;
-  }
-
-  .connectorLine {
-    stroke-dasharray: var(--pathLength);
-    stroke-dashoffset: var(--pathLength);
-    animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
+    display: none;
   }
 }
+
 @keyframes animateColor {
   from {
     stroke: $color1;

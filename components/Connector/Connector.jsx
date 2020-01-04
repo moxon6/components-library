@@ -16,15 +16,15 @@ const createPath = (width, height) => (
 )
 
 export default function Connector({ isVisible, styles = defaultStyles }) {
-    const containerRef = useRef(null);
+    const svgRef = useRef(null);
     const [pathLength, setPathLength] = useState(0);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
     useLayoutEffect(() => {
         function setSize() {
-            const { width, height } = containerRef.current.getBoundingClientRect();
+            const { width, height } = svgRef.current.getBoundingClientRect();
             setDimensions({ width, height });
-            const path = containerRef
+            const path = svgRef
                 .current
                 .querySelector('path');
             setPathLength(path.getTotalLength());
@@ -32,19 +32,17 @@ export default function Connector({ isVisible, styles = defaultStyles }) {
         setSize();
 
         new ResizeObserver(setSize)
-            .observe(containerRef.current);
+            .observe(svgRef.current);
     }, [])
 
     return (
-            <div className={classNames({
-                [styles.lineContainer]: true,
-                [styles.hidden]: !isVisible
-            })} ref={containerRef}>
-                <svg style={{ '--pathLength': pathLength}} className={styles.connectorLine} version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
-                    <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2" fill="none">
-                    </path>
-                </svg>
+        <svg className={classNames({
+            [styles.connectorLine]: true,
+            [styles.hidden]: !isVisible
+        })} ref={svgRef} style={{ '--pathLength': pathLength }} version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
+            <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2" fill="none">
+            </path>
+        </svg>
 
-            </div>
     )
 }
