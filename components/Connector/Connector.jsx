@@ -40,8 +40,7 @@ export default function Connector({ isVisible, styles = defaultStyles }) {
             [styles.connectorLine]: true,
             [styles.hidden]: !isVisible
         })} ref={svgRef} style={{ '--pathLength': pathLength }} version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
-            <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2" fill="none">
-            </path>
+            <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2" fill="none"/>
         </svg>
 
     )
