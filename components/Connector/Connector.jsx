@@ -60,7 +60,7 @@ export default function Connector({ registerOnScroll }) {
                 "line-container": true,
                 "hidden": !isVisible
             })} ref={containerRef}>
-                <svg ref={svgRef} id="line" version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
+                <svg ref={svgRef} className="connector-line" version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
                     <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2"
                         fill="none">
                     </path>
