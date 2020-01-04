@@ -12,7 +12,7 @@ export const connectorExample = () => {
 
   return (
     <div className="connector-container">
-      <Connector isVisible={boolean("isVisible", false)}/>
-  </div>
+      <Connector isVisible={boolean("isVisible", false)} />
+    </div>
   )
 }
