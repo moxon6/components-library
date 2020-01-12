@@ -1,10 +1,15 @@
 $color1: #fd335e !default;
 $color2: #08fdd8 !default;
 
+$defaultFillDuration: 0s;
+$defaultColorDuration: 0s;
+
 .connectorLine {
   stroke-dasharray: var(--pathLength);
   stroke-dashoffset: var(--pathLength);
-  animation: animateLineFill 2.5s ease-in-out forwards, animateColor 2s linear forwards;
+  animation: 
+    animateLineFill var(--fillDuration, $defaultFillDuration)ease-in-out forwards,
+    animateColor var(--colorDuration, $defaultColorDuration) linear forwards;
   &.hidden {
     display: none;
   }

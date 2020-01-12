@@ -15,10 +15,16 @@ const createPath = (width, height) => (
     `
 )
 
-export default function Connector({ isVisible, styles = defaultStyles }) {
+export default function Connector({ isVisible, styles = defaultStyles, fillDuration, colorDuration }) {
     const svgRef = useRef(null);
     const [pathLength, setPathLength] = useState(0);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+    const style = {
+        '--pathLength': pathLength,
+        '--fillDuration': fillDuration,
+        '--colorDuration': colorDuration
+    }
 
     useLayoutEffect(() => {
         function setSize() {
@@ -39,7 +45,7 @@ export default function Connector({ isVisible, styles = defaultStyles }) {
         <svg className={classNames({
             [styles.connectorLine]: true,
             [styles.hidden]: !isVisible
-        })} ref={svgRef} style={{ '--pathLength': pathLength }} version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
+        })} ref={svgRef} style={style} version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" viewBox={createViewBox(dimensions.width, dimensions.height)} height="100%" width="100%">
             <path d={createPath(dimensions.width, dimensions.height)} vectorEffect="non-scaling-stroke" strokeWidth="2" fill="none"/>
         </svg>
 
